@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#hidden {
+    display: none;
+}
+
+#typer{
+    resize: none;
+    width: 100%;
+    background-color: transparent;
+    color: #3c3f41;
+    border: 2px solid #FFAC41;
+    border-radius: 2.5px;
+    outline: none;
+    font-size:1.65rem;
+    height: 10rem;
+    font-weight: bold;
+}
+#typer:focus{
+    border: 1.5px solid #3A3B3C;
+}
+
+#target-text{
+    color: #3A3B3C;
+    font-size: 1.65rem;
+    font-weight: bold;
+}
+
+#logo, .headcount{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.correct{
+    color: #FFAC41;
+}
+
+.incorrect{
+    color: #FF1E56;
+    text-decoration: underline;
+}
+
+.mycard{
+    background: transparent;
+    border: 1.5px solid #FFAC41;
+    padding: 2rem;
+}
+
+.size-inc{
+    font-size: 4rem;
+}
+
+.none-dis, .none-dis:focus{
+    display: none;
+}
+
+.bg-accent{
+    background-color: #FFAC41 !important;
+    color: #3A3B3C !important;
+    font-weight: bold;
+}
+
+a{
+    text-decoration: none;
+}

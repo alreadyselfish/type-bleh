@@ -1,21 +1,21 @@
 from django.shortcuts import render
 import requests 
-from django.http import HttpResponse 
+from django.http import HttpResponse, Http404
 import json
+from random import randint
+from .words_db import ret_words
 
-endpoint = "https://random-word-api.herokuapp.com/word?lang=de&number=300&"
-
-
-def typetest(request):
+words = ret_words()
+def typetest(request, dif):
+    if dif not in (1, 2, 3):
+        return Http404
+    sentence = []
     context = {}
-    sentences = []
-    for i in [3, 5, 8]:
-        added = f'length={i}'
-        added = endpoint + added
-        response = requests.get(added).text
-        sentences.append(json.loads(response)) 
-    context['easy_sen'] = " ".join(sentences[0]).lower()
-    context['med_sen'] = " ".join(sentences[1]).lower()
-    context['hard_sen'] = " ".join(sentences[2]).lower()
+    for i in range(99):
+        sentence.append(words[dif][randint(0, 699)])
+    context['sen'] = " ".join(sentence)
     return render(request, 'ind.html', context=context)
- 
+
+def homepage(request):
+    context = {}
+    return render(request, 'home.html', context)
