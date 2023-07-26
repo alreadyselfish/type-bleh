@@ -15,6 +15,8 @@ function render_text(){
 }
 
 function gameOver() {
+    let timeSpent = count * -1;
+    count = -65;
     let target = target_text.split(" ");
     const typedText = document.getElementById('typer').value.trim();
     const typedWords = typedText.split(' ');
@@ -28,19 +30,24 @@ function gameOver() {
         }
     }
     let accuracy =  (correctWords/typedWords.length) * 100;
+    let wpm = Math.ceil(correctWords/timeSpent) * 100;
     // Display the results
     document.querySelector('.headcount').innerHTML = `Game Over!`;
-    document.querySelector('#target-text').innerHTML = `Speed: <span class="correct size-inc mx-2">${correctWords} WPM</span> <br> Accuracy: ${accuracy}%`;
+    document.querySelector('#target-text').innerHTML = '';
+    document.querySelector('#target-text').innerHTML = `Speed: <span class="correct size-inc mx-2">${wpm} WPM</span> <br> Accuracy: ${accuracy}%`;
     document.querySelector('#typer').classList.add('none-dis');
 }
 
 
 function timer(){
-    if (count == -60) {
+    if (count <= -60) {
         clearInterval(intervalID);
+        return;
+    }
+    if (count == -60) {
         gameOver();
         return;
-    }   
+    } 
     count -= 1;
     if (count >= 0){
         document.querySelector('#headcount-num').innerHTML = `${count}`;
@@ -70,10 +77,18 @@ function color_change() {
         else if (target[ind] != inp[ind]){
             ch.classList.add('incorrect');
             ch.classList.remove('correct');
+            if (ind == target.length-1){
+                gameOver();
+                break;
+            }
         }
         else {
             ch.classList.add('correct');
             ch.classList.remove('incorrect');
+            if (ind == target.length-1){
+                gameOver();
+                break;
+            }
         }
         para.appendChild(ch);
     }
