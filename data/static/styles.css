@@ -8,19 +8,9 @@ body {
 }
 
 #typer{
-    resize: none;
-    width: 100%;
-    background-color: transparent;
-    color: #3c3f41;
-    border: 2px solid #FFAC41;
-    border-radius: 2.5px;
-    outline: none;
-    font-size:1.65rem;
-    height: 10rem;
-    font-weight: bold;
-}
-#typer:focus{
-    border: 1.5px solid #3A3B3C;
+    position: absolute;
+    top: -5000000px;
+    color: transparent;
 }
 
 #target-text{
@@ -66,4 +56,17 @@ body {
 
 a{
     text-decoration: none;
+}
+
+.cursor-style{
+    background-color: #543c1c;
+    opacity: 0.59;
+    color: whitesmoke;
+    animation: blink 0.7s linear infinite;
+}
+
+@keyframes blink{
+    0%{opacity: 0;}
+    50%{opacity: 1;}
+    100%{opacity:0.5;}
 }
