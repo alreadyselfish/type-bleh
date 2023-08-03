@@ -12,6 +12,13 @@ def typetest(request, dif):
         return Http404
     sentence = []
     context = {}
+    if dif == 1:
+        context['diff'] = 4.4
+    if dif == 2:
+        context['diff'] = 6.3
+    if dif == 3:
+        context['diff'] = 7.8
+
     for i in range(99):
         sentence.append(words[dif][randint(0, 699)])
     context['sen'] = " ".join(sentence)
@@ -31,6 +38,6 @@ def quote(request):
         if counts == 0:
             break
         sentences.append(i['q'])
-    context = {}
+    context = {'diff':4.5}
     context['sen'] = " ".join(sentences)
     return render(request, 'ind.html', context)

@@ -23,22 +23,28 @@ function render_text(){
     });
 }
 
+function getDiff(){
+    let diff = document.querySelector('#difficult-meter').innerHTML;
+    return diff;
+}
+
 function gameOver() {
     let timeSpent = count * -1;
     count = -65;
-    let target = target_text.split(" ");
+    let target = target_text.split("");
     const typedText = document.getElementById('typer').value.trim();
-    const typedWords = typedText.split(' ');
-    let correctWords = 0;
+    const typedWords = typedText.split('');
+    let correctLetters = 0;
     for (let i = 0; i < target.length; i++) {
-        if (i>=typedWords.length){
+        if (i >= target.length){
             break;
         }
-        if (target[i] === typedWords[i]) {
-            correctWords++;
+        if (target[i]==typedWords[i]){
+            correctLetters += 1;
         }
     }
-    let accuracy =  (correctWords/typedWords.length) * 100;
+    let correctWords = correctLetters/getDiff(); 
+    let accuracy =  Math.floor(correctWords/typedWords.length) * 100;
     let wpm = Math.floor((correctWords/timeSpent) * 60);
     // Display the results
     document.querySelector('.headcount').innerHTML = `Game Over!`;
