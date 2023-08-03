@@ -13,9 +13,9 @@ def typetest(request, dif):
     sentence = []
     context = {}
     if dif == 1:
-        context['diff'] = 4.4
+        context['diff'] = 5.1
     if dif == 2:
-        context['diff'] = 6.3
+        context['diff'] = 6.9
     if dif == 3:
         context['diff'] = 7.8
 

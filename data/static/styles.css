@@ -32,6 +32,7 @@ body {
 .incorrect{
     color: #FF1E56;
     text-decoration: underline;
+    text-underline-offset: 0.45rem;
 }
 
 .mycard{

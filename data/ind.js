@@ -44,7 +44,7 @@ function gameOver() {
         }
     }
     let correctWords = correctLetters/getDiff(); 
-    let accuracy =  Math.floor(correctWords/typedWords.length) * 100;
+    let accuracy =  Math.floor((correctWords/typedWords.length) * 100) ;
     let wpm = Math.floor((correctWords/timeSpent) * 60);
     // Display the results
     document.querySelector('.headcount').innerHTML = `Game Over!`;
